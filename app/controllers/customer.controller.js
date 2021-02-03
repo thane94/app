@@ -1,5 +1,4 @@
 const User = require ("../models/customer.model.js");
-
 // Kreiranje i spremanje novog korisnika
 	exports.create=(req, res) => {
 		if(!req.body) {
@@ -24,6 +23,43 @@ const User = require ("../models/customer.model.js");
 				else res.send(data);
 		});
 	};
+// Slanje poruke
+const fs = require('fs');
+
+const Message = function(message) {
+	this.Ime = message.Ime;
+	this.Prezime = message.Prezime;
+	this.Broj = message.Broj;
+};
+
+exports.message=(req, res) => {
+
+	if(!req.body) {
+		res.status(400).send({
+			message: "Content cant be empty!"
+		});
+	}
+
+	const message = new Message({
+
+		Ime: req.body.Ime,
+		Prezime: req.body.Prezime,
+		Broj: req.body.Broj
+
+	});
+
+	Message.message(message,(erry,data)=>{
+
+		if(err)
+			res.status(500).send({
+				message:
+					err.message || "ERROR"
+		
+			});
+			else res.send(data);
+	});
+};
+
 // Vračanje svih korisnika iz baze 
 	exports.findAll = (req, res) => {
 		User.getAll((err, data) => {

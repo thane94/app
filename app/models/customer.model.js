@@ -7,6 +7,7 @@ const User = function(user) {
 	this.DatumPrvogUnosa = user.DatumPrvogUnosa;
 };
 
+
 User.create = (newUser, result) => {
 	sql.query("INSERT INTO User SET ?", newUser, (err, res) => {
 		if(err) {

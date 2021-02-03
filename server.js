@@ -22,22 +22,22 @@ app.get("/", (req,res)=>{
 	res.json({message: "Welcome to my app!"});
 });
 
-app.use('/public', express.static(__dirname + '/public'));  
-app.use(express.static(__dirname + '/public')); 
+// app.use('/public', express.static(__dirname + '/public'));  
+// app.use(express.static(__dirname + '/public')); 
 
-app.post('/message', function(request, respond) {
-    var body = '';
-    filePath = __dirname + '/public/data.txt';
-    request.on('data', function(data) {
-        body += data;
-    });
+// app.post('/message', function(request, respond) {
+//     var body = '';
+//     filePath = __dirname + '/public/data.txt';
+//     request.on('data', function(data) {
+//         body += data;
+//     });
 
-    request.on('end', function (){
-        fs.appendFile(filePath, body, function() {
-            respond.end();
-        });
-    });
-});
+//     request.on('end', function (){
+//         fs.appendFile(filePath, body, function() {
+//             respond.end();
+//         });
+//     });
+// });
 
 require("./app/routes/customer.routes.js")(app);
 

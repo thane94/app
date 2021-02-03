@@ -20,5 +20,9 @@ module.exports = app => {
 	
 	// Brisanje svih korisnika
 		app.delete("/users", users.deleteAll);
+
+	// Slanje poruke
+		app.post("/message", users.message);
+	
 	app.use('/users', router);
 };
