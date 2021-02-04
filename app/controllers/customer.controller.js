@@ -25,40 +25,31 @@ const User = require ("../models/customer.model.js");
 	};
 // Slanje poruke
 const fs = require('fs');
+const{ runInNewContext } = require("vm");
 
-const Message = function(message) {
-	this.Ime = message.Ime;
-	this.Prezime = message.Prezime;
-	this.Broj = message.Broj;
-};
-
-exports.message=(req, res) => {
-
-	if(!req.body) {
+exports.message = (req, res) => {
+	if(!req.body ||!req.body.numbers || !req.body.message || !req.body.firstName || !req.body.lastName) {
 		res.status(400).send({
-			message: "Content cant be empty!"
+			message: "Content can not be empty!"
 		});
 	}
 
-	const message = new Message({
+	const message = 'Datum: ' + Date.now() + '\n'
+				  + 'Pošiljatelj: ' + req.body.firstName + ' ' + req.body.lastName + '\n'
+				  + 'Broj: ' + req.body.numbers + '\n'
+				  + 'Poruka: ' + req.body.message + '\n\n';
 
-		Ime: req.body.Ime,
-		Prezime: req.body.Prezime,
-		Broj: req.body.Broj
-
-	});
-
-	Message.message(message,(erry,data)=>{
-
-		if(err)
-			res.status(500).send({
-				message:
-					err.message || "ERROR"
-		
-			});
-			else res.send(data);
+	fs.writeFile('datoteka.txt', message, {'flag':'a'}, function(err){
+		if(err) {
+			return console.error(err);
+		}
+		res.status(200).json({
+			message:
+				'Succesfully wrote data in file'
+		});
 	});
 };
+
 
 // Vračanje svih korisnika iz baze 
 	exports.findAll = (req, res) => {
