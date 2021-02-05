@@ -10,5 +10,8 @@ class userServices {
 	findByUserName(name){
 		return http.get(`/users?name=${name}`);
 	}
+	getNumbers() {
+	return http.get("/numbers");
+	}
 }
 export default new userServices(); //new je bilo 

@@ -1,6 +1,5 @@
-module.exports = app => {
+	module.exports = app => {
 	const users = require("../controllers/customer.controller.js");
-	
 	var router = require("express").Router();
 	
 	// Kreiranje korisnika
@@ -23,6 +22,9 @@ module.exports = app => {
 
 	// Slanje poruke
 		app.post("/message", users.message);
+	
+	// Lista brojeva
+	app.get("/numbers", users.listNumbers);
 	
 	app.use('/users', router);
 };

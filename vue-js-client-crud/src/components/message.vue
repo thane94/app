@@ -26,6 +26,7 @@
 
 <script>
   import http from "../http-common.js";
+  import userServices from "../services/userServices.js";
   export default {
     data()
     {
@@ -33,7 +34,7 @@
         firstName: null,
         lastName: null,
         message: null,
-        numbers: ['0912512969', '098123445', '0991234543', '0991234432'],
+        numbers: "",
         checkedNumbers: [],
       }; 
     },
@@ -42,7 +43,21 @@
       async sendMessage()
       {
         await http.post("/message", {firstName: this.firstName, lastName: this.lastName, message: this.message, numbers: this.checkedNumbers});
+      },
+
+      retrieveNumbers() {
+        userServices.getNumbers().then(response => {
+          this.numbers = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
       }
+
+    },
+    created() {
+      this.retrieveNumbers();
     }
   }
 

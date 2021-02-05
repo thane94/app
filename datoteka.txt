@@ -1,10 +1,5 @@
-Datum: 1612456075089
+Datum: 1612523328782
 Pošiljatelj: Dorian Centa
-Broj: 098123445,0912512969
-Poruka: Test
-
-Datum: 1612456225098
-Pošiljatelj: Dorian Centa
-Broj: 0912512969,0991234543
-Poruka: TEST 2
+Broj: [object Object],[object Object],[object Object]
+Poruka: Test poruka
 

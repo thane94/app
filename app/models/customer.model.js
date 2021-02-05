@@ -7,6 +7,18 @@ const User = function(user) {
 	this.DatumPrvogUnosa = user.DatumPrvogUnosa;
 };
 
+User.getNumbers = result => {
+	sql.query("SELECT * FROM PhoneNumber", (err, res) => {
+		if(err) {
+			console.log("ERROR: ", err);
+			result(null, err);
+			return;
+		} 
+		
+		console.log("Phone number: ", res);
+		result(null, res);
+	});
+};
 
 User.create = (newUser, result) => {
 	sql.query("INSERT INTO User SET ?", newUser, (err, res) => {

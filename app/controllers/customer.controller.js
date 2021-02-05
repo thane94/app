@@ -49,7 +49,18 @@ exports.message = (req, res) => {
 		});
 	});
 };
+// Lista brojeva
 
+exports.listNumbers = (req, res) => {
+	User.getNumbers((err, data) => {
+		if (err)
+			res.status(500).send ({
+				message: 
+					err.message || "Some error occured while retrieving the numbers"
+			});
+			else res.send(data);
+	});
+};
 
 // Vračanje svih korisnika iz baze 
 	exports.findAll = (req, res) => {
