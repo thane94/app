@@ -17,10 +17,10 @@
   </div>
 
   <div class="form-group form-check" v-for="number in numbers" :key="number">
-    <input type="checkbox" :value="number" v-model="checkedNumbers">
-    <label class="form-check-label" >{{number}}</label>
+    <input type="checkbox" :value="number.Broj" v-model="checkedNumbers">
+    <label class="form-check-label" >{{number.Broj}}</label>
   </div>
-  <button type="submit" class="btn btn-primary" @click="sendMessage">Send message</button>
+    <button type="submit" class="btn btn-primary" v-on:click="warn" @click="sendMessage">Send message</button>
 </div>
 </template>
 
@@ -36,6 +36,7 @@
         message: null,
         numbers: "",
         checkedNumbers: [],
+        success: 'You have submitted form successfully'
       }; 
     },
     methods:
@@ -43,7 +44,18 @@
       async sendMessage()
       {
         await http.post("/message", {firstName: this.firstName, lastName: this.lastName, message: this.message, numbers: this.checkedNumbers});
+        this.$data.firstName = "",
+        this.$data.lastName = "",
+        this.$data.checkedNumbers = [],
+        this.$data.message = "";
+
       },
+
+      warn() {
+          alert(this.success)
+          if(event)
+            alert(event.target.tagName)
+        },
 
       retrieveNumbers() {
         userServices.getNumbers().then(response => {

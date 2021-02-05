@@ -1,5 +1,10 @@
-Datum: 1612523328782
+Datum: 1612533034225
 Pošiljatelj: Dorian Centa
-Broj: [object Object],[object Object],[object Object]
-Poruka: Test poruka
+Broj: 0915212109,0985288231
+Poruka: Poruka
+
+Datum: 1612533047791
+Pošiljatelj: Sandra Dobrić
+Broj: 0922233145,0995088455,016222222
+Poruka: Poruka 2
 
