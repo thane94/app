@@ -1,4 +1,5 @@
 const User = require ("../models/customer.model.js");
+const PhoneNumber = ("../models/customer.model.js");
 // Kreiranje i spremanje novog korisnika
 	exports.create=(req, res) => {
 		if(!req.body) {
@@ -26,6 +27,7 @@ const User = require ("../models/customer.model.js");
 // Slanje poruke
 const fs = require('fs');
 const{ runInNewContext } = require("vm");
+const { resolveSoa } = require("dns");
 
 exports.message = (req, res) => {
 	if(!req.body ||!req.body.numbers || !req.body.message || !req.body.firstName || !req.body.lastName) {
@@ -49,6 +51,8 @@ exports.message = (req, res) => {
 		});
 	});
 };
+
+
 // Lista brojeva
 
 exports.listNumbers = (req, res) => {
@@ -90,6 +94,22 @@ exports.listNumbers = (req, res) => {
 			} else res.send(data);
 		});
 	};
+
+exports.number = (req, res) => {
+	User.getNumber(req.params.numberId, (err,data)=>{
+		if(err) {
+			if(err.kind==="not_found") {
+				res.status(404).send({
+					message: `Not found number ${req.params.numberId}.`
+				});
+			} else {
+				res.status(500).send ({
+					message: "Error retrieveing data "+req.params.numberId
+				});
+			}
+		} else res.send(data);
+	});
+};
 
 // Update korisnika
 	exports.update = (req, res) => {

@@ -24,7 +24,8 @@
 		app.post("/message", users.message);
 	
 	// Lista brojeva
-	app.get("/numbers", users.listNumbers);
-	
+		app.get("/numbers", users.listNumbers);
+	// Broj za korisnika
+		app.get("/numbers/:numberId", users.number);
 	app.use('/users', router);
 };

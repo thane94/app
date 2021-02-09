@@ -8,6 +8,13 @@ const router = createRouter({
 			name: "users",
 			component: () => import("./components/usersList")
 		},
+
+		{
+			path: "/users/:id",
+			name: "user-details",
+			component: () => import("./components/user")
+		},
+
 		{
 		path: "/add",
 		name: "add",
