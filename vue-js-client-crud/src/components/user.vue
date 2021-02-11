@@ -38,7 +38,7 @@
 		data() {
 			return {
 				currentUser: null,
-				phoneNumber: null
+				phoneNumber: []
 			};
 		},
 

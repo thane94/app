@@ -1,0 +1,20 @@
+Datum: 1613056340371
+Pošiljatelj: Dorian Centa
+Broj: 016223223,0915212109,0985288231
+Poruka: Poruka
+
+Datum: 1613056708492
+Pošiljatelj: Bla Bla
+Broj: 016222222
+Poruka: Bla
+
+Datum: 1613056722246
+Pošiljatelj: nests nesta
+Broj: 0915212109,0985288231
+Poruka: nesta
+
+Datum: 1613058235943
+Pošiljatelj: Dorian Centa
+Broj: 0985288231,016223223,0915212109
+Poruka: BLABLA
+

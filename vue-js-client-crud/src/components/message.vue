@@ -1,5 +1,12 @@
 <template>
 
+    <p v-if="errors.length">
+    <b>Please fill the following fields:</b>
+    <ul>
+      <li v-for="error in errors">{{ error }}</li>
+    </ul>
+  </p>
+
 <div>
   <div class="form-group">
     <label for="name">Name</label>
@@ -20,7 +27,7 @@
     <input type="checkbox" :value="number.Broj" v-model="checkedNumbers">
     <label class="form-check-label" >{{number.Broj}}</label>
   </div>
-    <button type="submit" class="btn btn-primary" v-on:click="warn" @click="sendMessage">Send message</button>
+    <button type="submit" class="btn btn-primary" v-on:click="alert" @click="checkFields; sendMessage">Send message</button>
 </div>
 </template>
 
@@ -31,6 +38,7 @@
     data()
     {
       return {
+        errors: [],
         firstName: null,
         lastName: null,
         message: null,
@@ -51,7 +59,7 @@
 
       },
 
-      warn() {
+      alert() {
           alert(this.success)
           if(event)
             alert(event.target.tagName)
@@ -65,7 +73,14 @@
         .catch(e => {
           console.log(e);
         });
-      }
+      },
+
+    checkFields() {
+      if(this.name && this.age) return true;
+      this.errors = [];
+      if(!this.name) this.errors.push("Name required.");
+      if(!this.age) this.errors.push("Age required.");
+    },
 
     },
     created() {
