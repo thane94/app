@@ -20,15 +20,20 @@
 						v-model = "currentUser.Adresa"
 					/>
 				</div>
-				<div class = "form-group">
-					<label for = "phoneNumber">Phone number</label>
-					<input type = "text" class = "form-control" id = "phoneNumber"
-						v-model = "currentUser.Broj"
-					/>
-				</div>
+
+			<div class="col-md-6">
+				<h4>Phone Numbers</h4>
+					<ul class="list-group">
+						<li class="list-group-item"
+						v-for="number in numbers" :key="number"
+						>	
+						{{ number.Broj }}
+						</li>
+					</ul>
+			</div>
+
 			</form>
 	</div>
-
 </template>
 
 <script>
@@ -37,8 +42,10 @@
 		name: "user",
 		data() {
 			return {
+				numbers: [],
 				currentUser: null,
-				phoneNumber: []
+				number: "",
+				Broj: ""
 			};
 		},
 
@@ -53,12 +60,11 @@
 					console.log(e);
 				});
 			},
-			getForUser(id) {
-				userServices.getNumber(id)
-					.then(response => {
-						this.phoneNumber = response.data;
-						console.log(response.data);
-					})
+			retrieveNumbers(id) {
+				userServices.getNumber(id).then(response => {
+					this.numbers = response.data;
+					console.log(response.data);
+				})
 				.catch(e => {
 					console.log(e);
 				});
@@ -66,7 +72,7 @@
 		},
 		created() {
 			this.getUser(this.$route.params.id);
-			this.getForUser(this.$route.params.id);
+			this.retrieveNumbers(this.$route.params.id);
 		}
 	};
 </script>

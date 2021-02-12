@@ -10,8 +10,8 @@ class userServices {
 	create(data) {
 		return http.post("/users", data);
 	}
-	findByUserName(users){
-		return http.get(`/users?name=${users}`);
+	findByUserName(user){
+		return http.get(`/users?user=${user}`);
 	}
 	getNumbers() {
 	return http.get("/numbers");
