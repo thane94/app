@@ -72,6 +72,7 @@
 		},
 		methods: {
 			saveUser(){
+				if(!(this.user.name && this.user.lastname && this.user.address && this.user.date)) return;
 				var data = {
 					Ime: this.user.Ime,
 					Prezime: this.user.Prezime,

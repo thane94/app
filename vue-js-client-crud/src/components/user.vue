@@ -27,7 +27,7 @@
 						<li class="list-group-item"
 						v-for="number in numbers" :key="number"
 						>	
-						{{ number.Broj }}
+						{{ number.Number }}
 						</li>
 					</ul>
 			</div>
@@ -44,8 +44,7 @@
 			return {
 				numbers: [],
 				currentUser: null,
-				number: "",
-				Broj: ""
+				number: ""
 			};
 		},
 

@@ -1,7 +1,7 @@
 CREATE DATABASE Kontakti;
 USE Kontakti;
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_passowrd BY 'root';
-FLUSH PRIVILEGES; 
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+FLUSH PRIVILEGES;
 CREATE TABLE Korisnik (
 	IDkorisnik				INT	AUTO_INCREMENT	PRIMARY KEY,
     Ime						NVARCHAR(255)	NOT NULL,

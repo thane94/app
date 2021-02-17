@@ -7,6 +7,7 @@ const User = function(user) {
 	this.DatumPrvogUnosa = user.DatumPrvogUnosa;
 };
 
+
 User.getNumber = (numberId, result) => {
 	sql.query(`Select Broj AS Number FROM PhoneNumber INNER JOIN User IDkorisnik ON PhoneNumber.korisnikID = IDkorisnik WHERE korisnikID=${numberId}`,(err,res) => {
 		if(err) {
@@ -65,6 +66,7 @@ User.findById = (userId, result) => {
 		reuslt({kind: "not_found"}, null);
 	});
 };
+var now = new Date();
 
 User.getAll = result => {
 	sql.query("SELECT * FROM User", (err, res) => {
@@ -73,7 +75,6 @@ User.getAll = result => {
 			result(null, err);
 			return;
 		} 
-		
 		console.log("User: ", res);
 		result(null, res);
 	});

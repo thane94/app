@@ -42,7 +42,8 @@
     methods:
     {
       async sendMessage()
-      {
+      { 
+        if(!(this.firstName && this.lastName && this.numbers && this.message)) return;
         await http.post("/message", {firstName: this.firstName, lastName: this.lastName, message: this.message, numbers: this.checkedNumbers});
         this.$data.firstName = "",
         this.$data.lastName = "",
@@ -51,7 +52,7 @@
       },
 
       alert() {
-          alert(this.success)
+         alert(this.success)
           if(event)
             alert(event.target.tagName)
         },

@@ -28,6 +28,7 @@ const PhoneNumber = ("../models/customer.model.js");
 const fs = require('fs');
 const{ runInNewContext } = require("vm");
 const { resolveSoa } = require("dns");
+const { query } = require("express");
 
 exports.message = (req, res) => {
 	if(!req.body ||!req.body.numbers || !req.body.message || !req.body.firstName || !req.body.lastName) {
@@ -52,6 +53,7 @@ exports.message = (req, res) => {
 	});
 };
 
+// Pretraga korisnika po imenu
 
 // Lista brojeva
 
